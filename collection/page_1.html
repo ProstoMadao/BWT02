@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        margin: 0;
+    }
+    a {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        height: 100vh;
+        background-image: url("./colImg/8874c399d014a74a4e11eab11f9b7337.jpg");
+        background-size: cover;
+    }
+
+    .grid-item {
+        text-align: center;
+        padding: 20px;
+        font-size: 24px;
+    }
+
+    .grid-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+
+    .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600;
+    height: 400;
+    }
+
+    .thumbnail {
+        width: 100px;
+    }
+    </style>
+    </head>
+    <body>
+
+    <div class="grid-container">
+    <div class="grid-item"><a href="https://www.google.com/">Google</a></div>
+    <div class="grid-item"><a href="https://www.youtube.com/">YouTube</a></div>
+    <div class="grid-item"><a href="https://www.facebook.com/">Facebook</a></div>
+    <div class="grid-item"><a href="https://www.twitter.com/">Twitter</a></div>
+    <div class="grid-item image-cell"><img src="./colImg/04.jpeg" alt="Изображение"> </div>
+    <div class="grid-item"><a href="https://www.instagram.com/">Instagram</a></div>
+    <div class="grid-item"><a href="https://www.wikipedia.org/">Wikipedia</a></div>
+    <div class="grid-item"><a href="https://www.amazon.com/">Amazon</a></div>
+    <div class="grid-item"><a href="https://www.linkedin.com/">LinkedIn</a></div>
+    </div>
+    <br><br><br>
+
+    <div class="image-container">
+        <a href="./colImg/big.jpg" target="_blank">
+            <img class="thumbnail" src="./colImg/small.jpeg" alt="Миниатюра" width="100px" height="100px" >
+        </a>
+    </div>
+
+</body>
+</html>
+
+</body>
+</html>
