@@ -1,0 +1,69 @@
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма отправки данных</title>
+    </head>
+    <body>
+    <h1>Отправить контактные данные</h1>
+    <form action="https://www.bing.com/search?" id="UserEnter" name="UserEnter" target="_blank">
+        <label for="lastName">Фамилия:</label>
+        <label><input name="q" value="search"></label>
+        <input type="text" id="lastName" name="lastName" value="Паланкоева" required><br><br>
+
+        <label for="firstName">Имя:</label>
+        <input type="text" id="firstName" name="firstName" value="Аиша" required><br><br>
+
+        <label for="group">Группа:</label>
+        <input type="text" id="group" name="group" value="к24" required><br><br>
+
+        <label for="phone">Мобильный телефон:</label>
+        <input type="tel" id="phone" name="phone" value="8 888 88 88" required><br><br>
+
+        <label for="email">Электронная почта:</label>
+        <input type="email" id="email" name="email" value="pochta2024@mail.ru" required><br><br>
+
+        <input type="submit" name="submit"></input>
+    </form>
+
+    <script>
+        const contactForm = document.getElementById('UserEnter');
+        const sendData = async (data) => {
+        try {
+            const response = await fetch('/your-api-endpoint', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+            console.log('Данные успешно отправлены!');
+            } else {
+            console.error('Ошибка при отправке данных!');
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+        };
+
+        contactForm.addEventListener('submit'), (event) => {
+        event.preventDefault();
+
+        const data = {
+            lastName: document.getElementById('lastName').value,
+            firstName: document.getElementById('firstName').value,
+            group: document.getElementById('group').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            date: new Date().toISOString() 
+        };
+
+        sendData(data);
+        contactForm.reset();
+        };
+    </script>
+    </body>
+    </html>
