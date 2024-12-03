@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Определение знака числа</title>
+</head>
+<body>
+
+    <h1>Дано вещественное число. Определить, какое это число: положительное, отрицательное, ноль.</h1>
+
+    <form id="taskForm">
+    <label for="number">Введите вещественное число:</label>
+    <input type="number" id="number" name="number" required>
+
+    <button type="submit">Решить</button>
+    </form>
+
+    <div id="results">
+    <h2>Результат:</h2>
+    <p id="result"></p>
+    </div>
+
+<script>
+    const form = document.getElementById('taskForm');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', async function(event) {
+    event.preventDefault(); 
+
+    const number = parseFloat(document.getElementById('number').value);
+
+     // Решение задачи
+    let sign;
+    if (number > 0) {
+        sign = 'Положительное';
+    } else if (number < 0) {
+        sign = 'Отрицательное';
+    } else {
+        sign = 'Ноль';
+    }
+
+// Вывод результата
+    result.textContent = `Число ${number} - ${sign}`;
+
+// Отправка данных на сервер
+    try {
+        const response = await fetch('/api/tasks', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+        task: 'Определение знака числа', 
+        input: number,
+        output: sign
+        })
+    });
+
+    if (response.ok) {
+        console.log('Данные успешно отправлены на сервер.');
+    } else {
+        console.error('Ошибка при отправке данных на сервер.');
+        }
+    } catch (error) {
+        console.error('Ошибка:', error);
+    }
+    });
+</script>
+
+</body>
+</html>
